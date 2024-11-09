@@ -6,12 +6,12 @@
     row3: document.querySelector(".row-3"),
   };
   const players = {
-    player1: [2, 1, 3],
-    player2: [3, 8, 4],
+    player1: [3, 1, 3],
+    player2: [4, 5, 6],
   };
   let globalCounter = 0;
   determineWin(players);
-  displayGameBoard(gameBoard, rows, globalCounter);
+  // displayGameBoard(gameBoard, rows, globalCounter);
 })();
 
 function determineWin(players) {
@@ -30,32 +30,33 @@ function determineWin(players) {
   for (let i = 0; i < winningCombinations.length; i++) {
     const combination = winningCombinations[i];
 
-    let isWinningCombination = true;
     for (let j = 0; j < combination.length; j++) {
-      if (!player1.includes(combination[j])) {
-        isWinningCombination = false;
-        break;
+      if (combination.every((val) => player1.includes(val))) {
+        player1Wins();
+        return;
       }
-      // else if (player2.includes(combination[j])) {
-      //   isWinningCombination = true;
-      //   break;
-      // }
-    }
-
-    if (isWinningCombination) {
-      console.log("winner!");
-      return;
+      if (combination.every((val) => player2.includes(val))) {
+        player2Wins();
+        return;
+      }
     }
   }
 }
 
-function displayGameBoard(board, rows, counter) {
-  const gameBoard = board;
-  let globalCounter = counter;
-  for (let i = 0; i < gameBoard.length; i++) {
-    for (let j = 0; j <= 2; j++) {
-      rows[`row${i + 1}`].innerHTML += gameBoard[globalCounter];
-      globalCounter++;
-    }
-  }
+function player1Wins() {
+  console.log("Player 1 wins!");
 }
+function player2Wins() {
+  console.log("Player 2 wins!");
+}
+
+// function displayGameBoard(board, rows, counter) {
+//   const gameBoard = board;
+//   let globalCounter = counter;
+//   for (let i = 0; i < gameBoard.length; i++) {
+//     for (let j = 0; j <= 2; j++) {
+//       rows[`row${i + 1}`].innerHTML += gameBoard[globalCounter];
+//       globalCounter++;
+//     }
+//   }
+// }
