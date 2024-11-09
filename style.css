@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", serif;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  display: grid;
+  grid-template-rows: 1fr 1fr 0.5fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #25170e; */
+  background-color: #372216;
+  /* background-color: #6d3b07; */
+}
+.container {
+  display: grid;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  width: 500px;
+  height: 500px;
+  gap: 5px;
+  background-color: #4b372b;
+}
+.container > button {
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  color: #6d3b07;
+  background-color: #e0cdb5;
+  font-size: 5rem;
+  border: none;
+  transition: ease-in-out 0.1s;
+  border-radius: 0.3rem;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #b5925d;
+}
+button:active {
+  background-color: #c7a97f;
+}
+nav {
+  display: grid;
+  grid-column-start: 2;
+}
+form {
+  display: inline-grid;
+  color: white;
+}
+label {
+  font-size: 1.5rem;
+  margin: 10px 0 10px 0;
+}
+.input-text {
+  font-size: 1rem;
+  border: none;
+  padding: 0.5rem;
+  margin: 10px 0 10px 0;
+  border-radius: 0.3rem;
+  background-color: #e0cdb5;
+  color: #6d3b07;
+}
+.input-text:focus {
+  outline: 3px solid #a2958e;
+  box-shadow: 0 0 15px#a2958e;
+}
+.input-button {
+  font-size: 1rem;
+  border: none;
+  padding: 0.5rem;
+  margin: 10px 0 10px 0;
+  border-radius: 0.3rem;
+  background-color: #76645a;
+  color: #e0cdb5;
+  transition: ease-in-out 0.1s;
+}
+.input-button:hover {
+  cursor: pointer;
+  background-color: #604d42;
+  box-shadow: 0 0 15px#604d42;
+}
+.input-button:active {
+  background-color: #4b372b;
+}
