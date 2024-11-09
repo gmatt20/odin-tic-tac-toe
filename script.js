@@ -1,16 +1,27 @@
 (function playGame() {
-  let gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const rows = {
-    row1: document.querySelector(".row-1"),
-    row2: document.querySelector(".row-2"),
-    row3: document.querySelector(".row-3"),
-  };
-  const players = {
-    player1: [3, 1, 3],
-    player2: [4, 5, 6],
-  };
-  let globalCounter = 0;
-  determineWin(players);
+  const gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const gameBoardHTML = {};
+  for (let i = 1; i <= 9; i++) {
+    gameBoardHTML[`cell${i}`] = document.getElementById(`cell-${i}`);
+  }
+  const playGameButton = document.getElementById("play-game-button");
+  playGameButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    createPlayers();
+  });
+  function createPlayers() {
+    const player1Name = document.getElementById("player-1-name").value;
+    const player2Name = document.getElementById("player-2-name").value;
+    const player1 = setPlayers(player1Name);
+    const player2 = setPlayers(player2Name);
+  }
+  function setPlayers(name) {
+    return {
+      name: name,
+    };
+  }
+  // let globalCounter = 0;
+  // determineWin(players);
   // displayGameBoard(gameBoard, rows, globalCounter);
 })();
 
