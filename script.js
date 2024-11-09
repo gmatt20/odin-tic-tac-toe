@@ -1,33 +1,18 @@
-// function Gameboard(name) {
-//   const player = name;
-
-//   return function () {
-//     let game = [];
-//   };
-// }
-// const player1 = Gameboard("Matt");
-// player1();
-// console.log(player1);
-// const gameBoard = [
-//   "O", "X", "O",
-//   "O", "X", "O",
-//   "O", "X", "O"];
 (function playGame() {
-  const players = {
-    player1: [9, 6, 3],
-    player2: [6, 8, 4],
+  let gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const rows = {
+    row1: document.querySelector(".row-1"),
+    row2: document.querySelector(".row-2"),
+    row3: document.querySelector(".row-3"),
   };
+  const players = {
+    player1: [2, 1, 3],
+    player2: [3, 8, 4],
+  };
+  let globalCounter = 0;
   determineWin(players);
+  displayGameBoard(gameBoard, rows, globalCounter);
 })();
-
-let gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const rows = {
-  row1: document.querySelector(".row-1"),
-  row2: document.querySelector(".row-2"),
-  row3: document.querySelector(".row-3"),
-};
-let globalCounter = 0;
-console.log(gameBoard);
 
 function determineWin(players) {
   const player1 = players.player1;
@@ -45,13 +30,16 @@ function determineWin(players) {
   for (let i = 0; i < winningCombinations.length; i++) {
     const combination = winningCombinations[i];
 
-    let isWinningCombination = false;
+    let isWinningCombination = true;
     for (let j = 0; j < combination.length; j++) {
-      if (player1.includes(combination[j])) {
-        console.log(j);
-        isWinningCombination = true;
+      if (!player1.includes(combination[j])) {
+        isWinningCombination = false;
         break;
       }
+      // else if (player2.includes(combination[j])) {
+      //   isWinningCombination = true;
+      //   break;
+      // }
     }
 
     if (isWinningCombination) {
@@ -59,59 +47,15 @@ function determineWin(players) {
       return;
     }
   }
-  // if (player1.includes(1) && player1.includes(2) && player1.includes(3)) {
-  //   console.log("winner!");
-  // } else if (
-  //   player1.includes(4) &&
-  //   player1.includes(5) &&
-  //   player1.includes(6)
-  // ) {
-  //   console.log("winner!");
-  // } else if (
-  //   player1.includes(7) &&
-  //   player1.includes(8) &&
-  //   player1.includes(9)
-  // ) {
-  //   console.log("winner!");
-  // } else if (
-  //   player1.includes(1) &&
-  //   player1.includes(4) &&
-  //   player1.includes(7)
-  // ) {
-  //   console.log("winner!");
-  // } else if (
-  //   player1.includes(2) &&
-  //   player1.includes(5) &&
-  //   player1.includes(8)
-  // ) {
-  //   console.log("winner!");
-  // } else if (
-  //   player1.includes(3) &&
-  //   player1.includes(6) &&
-  //   player1.includes(9)
-  // ) {
-  //   console.log("winner!");
-  // } else if (
-  //   player1.includes(1) &&
-  //   player1.includes(5) &&
-  //   player1.includes(9)
-  // ) {
-  //   console.log("winner!");
-  // } else if (
-  //   player1.includes(3) &&
-  //   player1.includes(5) &&
-  //   player1.includes(7)
-  // ) {
-  //   console.log("winner!");
-  // }
 }
 
-for (let i = 0; i < gameBoard.length; i++) {
-  // rows[`row${i + 1}`].innerHTML += gameBoard[i];
-  for (let j = 0; j <= 2; j++) {
-    // rows[`row${j}`].innerHTML += gameBoard[i];
-    rows[`row${i + 1}`].innerHTML += gameBoard[globalCounter];
-    globalCounter++;
+function displayGameBoard(board, rows, counter) {
+  const gameBoard = board;
+  let globalCounter = counter;
+  for (let i = 0; i < gameBoard.length; i++) {
+    for (let j = 0; j <= 2; j++) {
+      rows[`row${i + 1}`].innerHTML += gameBoard[globalCounter];
+      globalCounter++;
+    }
   }
 }
-// if(gameBoard[0] ==)
